@@ -1,0 +1,29 @@
+{
+    "name": "purvaarora/omnipay-mobikwik",
+    "type": "library",
+    "description": "Mobikwik driver for the Omnipay payment processing library",
+    "keywords": [
+        "mobikwik",
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment"
+    ],
+    "authors": [
+        {
+            "name": "Purva Arora",
+            "email": "purvaarora@muj.manipal.edu"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Mobikwik\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0",
+        "phpseclib/phpseclib": "^2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    }
+}
