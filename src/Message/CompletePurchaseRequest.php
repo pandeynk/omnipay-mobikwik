@@ -73,7 +73,7 @@ class CompletePurchaseRequest extends PurchaseRequest
             $json = json_encode($xml);
             $resultData = json_decode($json, true);
             if($statuscode == 0 && $checksum == $checkResponseChecksum) {
-                return $this->sendData($resultData)->isSuccessful(); 
+                return $this->sendData($resultData); 
             } else {
                 throw new InvalidResponseException($statusmessage);
             }
