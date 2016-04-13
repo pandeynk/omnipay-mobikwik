@@ -8,7 +8,17 @@ class CompletePurchaseRequest extends PurchaseRequest
 {
     public function getData()
     {
-        $parameters = $this->httpRequest->request->all();
+        $parameters = $this->httpRequest->request->all();            
+        return $parameters;   
+    }
+
+    public function sendData($data)
+    {
+        return $this->response = new CompletePurchaseResponse($this, $data);
+    }
+
+    public function verifyChecksum($parameters)
+    {
         $statuscode = $parameters['statuscode'];
         $orderid = $parameters['orderid'];     //unique reference number created for each transaction at PayU’s end
         $amount = $parameters['amount'];
@@ -28,6 +38,7 @@ class CompletePurchaseRequest extends PurchaseRequest
         $checkStatusChecksum = hash_hmac('sha256', $checkstatus, 'ju6tygh7u7tdg554k098ujd5468o');
 
         $verifychecksum = hash_hmac('sha256', $value, 'ju6tygh7u7tdg554k098ujd5468o');
+
         if ($checksum == $verifychecksum) {
             $postfields = array(
                 'mid' => $mid,
@@ -70,10 +81,5 @@ class CompletePurchaseRequest extends PurchaseRequest
             throw new InvalidResponseException($statusmessage);
         } 
         
-    }
-
-    public function sendData($data)
-    {
-        return $this->response = new CompletePurchaseResponse($this, $data);
     }
 }
