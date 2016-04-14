@@ -10,6 +10,7 @@
         "pay",
         "payment"
     ],
+    "homepage": "https://github.com/sumityadav/omnipay-paytm",
     "authors": [
         {
             "name": "Purva Arora",
